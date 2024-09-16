@@ -1,0 +1,16 @@
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
+@use './styles/partials/font-face' as *;
+
+// Style Rulesets
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', sans-serif;
+    color: $black;
+    margin: 0;
+    padding: 0;
+}
