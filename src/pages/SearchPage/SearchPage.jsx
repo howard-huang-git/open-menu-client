@@ -4,6 +4,7 @@ import MenuListing from '../../components/MenuListing/MenuListing'
 import RestaurantListing from '../../components/RestaurantListing/RestaurantListing'
 import './SearchPage.scss'
 import SearchBox from "../../components/SearchBox/SearchBox";
+import Divider from "../../components/Divider/Divider"
 
 function SearchPage() {
 
@@ -11,6 +12,7 @@ function SearchPage() {
 
   const [menuData, setMenuData] = useState([]);
   const [restaurantData, setRestaurantData] = useState([]);
+  const [searchFilter, setSearchFilter] = useState({search: "", area: "", sort: ""});
 
   const fetchMenu = async () => {
     try {
@@ -43,35 +45,66 @@ function SearchPage() {
     fetchRestaurants();
   }, []);
 
+  const sortFunction = (sort) => {
+    if (sort === "price-sort") {
+      return function(a, b){return a.price - b.price}
+    } else if (sort === "rating-sort") {
+      return function(a, b){return b.avg_rating - a.avg_rating}
+    } else {
+      return function(a, b){return b - a}
+    }
+  }
+
+  const areaFunction = (area) => {
+    return (item) => item.area === area
+  }
+
+  const searchFunction = (search) => {
+    if (search.trim() === "") {
+      return (item) => item
+    } else {
+      return (item) => item.item.toUpperCase().includes(search.trim().toUpperCase()) || item.category.toUpperCase().includes(search.trim().toUpperCase())
+    }
+  }
+
   const searchType = true;
 
   const searchList = (type) => {
     if (type === true) {
       return (
-        <section>
+        <>
           {
-            menuData.slice(0,20).map((item) => (
-              <MenuListing key={item.id} data={item} />
+            menuData.filter(searchFunction(searchFilter.search)).filter(areaFunction(searchFilter.area)).sort(sortFunction(searchFilter.sort)).map((item) => (
+              <div key={item.id} className="search-page__listing">
+                <MenuListing key={item.id} data={item} /> 
+                <Divider />
+              </div>
+              
             ))
           }
-        </section>
+        </>
       )
     } else {
       return (
-        <section>
+        <>
           {
             restaurantData.map((item) => (
-              <RestaurantListing key={item.id} data={item} />
+              <div key={item.id} className="search-page__listing">
+                <RestaurantListing key={item.id} data={item} />
+                <Divider />
+              </div>
+              
             ))
           }
-        </section>
+        </>
       )
     }
   }
 
   return (
     <>
-      <SearchBox />
+      <SearchBox change={setSearchFilter} />
+      <Divider />
       {searchList(searchType)}
     </>
   )

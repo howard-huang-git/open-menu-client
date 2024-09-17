@@ -3,7 +3,7 @@ import "./CTA.scss";
 function CTA({ text, className }) {
   return (
     <>
-        <button className={"CTA " + className}>{text}</button>
+        <button className={"CTA " + className} type="submit" >{text}</button>
     </>
   );
 }
