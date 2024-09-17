@@ -3,6 +3,7 @@ import axios from "axios";
 import MenuListing from '../../components/MenuListing/MenuListing'
 import RestaurantListing from '../../components/RestaurantListing/RestaurantListing'
 import './SearchPage.scss'
+import SearchBox from "../../components/SearchBox/SearchBox";
 
 function SearchPage() {
 
@@ -47,29 +48,30 @@ function SearchPage() {
   const searchList = (type) => {
     if (type === true) {
       return (
-        <>
+        <section>
           {
             menuData.slice(0,20).map((item) => (
               <MenuListing key={item.id} data={item} />
             ))
           }
-        </>
+        </section>
       )
     } else {
       return (
-        <>
+        <section>
           {
             restaurantData.map((item) => (
               <RestaurantListing key={item.id} data={item} />
             ))
           }
-        </>
+        </section>
       )
     }
   }
 
   return (
     <>
+      <SearchBox />
       {searchList(searchType)}
     </>
   )
