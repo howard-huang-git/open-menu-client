@@ -1,0 +1,7 @@
+@use "../../styles/partials/variables" as *;
+
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: $neutral;
+}

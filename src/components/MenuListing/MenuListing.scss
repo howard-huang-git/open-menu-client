@@ -1,0 +1,37 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.menu-listing {
+    @include padding-sides();
+    @include padding-component();
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__right {
+        width: 6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    &__name {
+        margin: 0;
+        @include subheader();
+    }
+    &__restaurant {
+        @include catch-copy();
+        @include padding-listing-gap();
+    }
+    &__rating {
+        margin: 0;
+        color: $primary;
+        text-align: right;
+        @include catch-copy();
+    }
+    &__price {
+        color: $secondary;
+        text-align: right;
+        @include catch-copy();
+        @include padding-listing-gap();
+    }
+}

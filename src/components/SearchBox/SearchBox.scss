@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.search-box {
+    @include padding-sides();
+    @include padding-component();
+
+    &__dropdowns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include padding-component-top-half();
+    }
+
+    &__select {
+        width: 49%;
+        height: 24px;
+        border-radius: 10px;
+        border-color: $neutral;
+        padding: 0 0.5rem;
+    }
+
+    &__button {
+        background-color: $primary;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+}

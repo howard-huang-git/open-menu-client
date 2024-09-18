@@ -1,0 +1,199 @@
+@use './variables' as *;
+
+// Media Queries
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+// Typography Styles
+
+@mixin font-style ($fontSize, $lineHeight, $fontWeight) {
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    font-weight: $fontWeight;
+}
+
+// Typekit
+
+@mixin page-header {
+    @include font-style (2rem, 2.75rem, 600);
+
+    // Tablet Typekits
+    @include tablet {
+        @include font-style (2.063rem, 2.75rem, 700);
+    }
+}
+
+@mixin section-header {
+    @include font-style (1.5rem, 2rem, 600);
+
+    // Tablet Typekits
+    @include tablet {
+        @include font-style (0.75rem, 1.25rem, 700);
+    }
+}
+
+@mixin subheader {
+    @include font-style (1.25rem, 1.5rem, 700);
+
+    // Tablet Typekits
+    @include tablet {
+        @include font-style (0.875rem, 1.375rem, 700);
+    }
+}
+
+@mixin catch-copy {
+    @include font-style (1.125rem, 1.5rem, 600);
+
+    // Tablet Typekits
+    @include tablet {
+        @include font-style (0.875rem, 1.375rem, 400);
+    }
+}
+
+@mixin body-copy {
+    @include font-style (1rem, 1.25rem, 400);
+
+    // Tablet Typekits
+    @include tablet {
+        @include font-style (0.875rem, 1.375rem, 400);
+    }
+}
+
+@mixin labels-buttons {
+    @include font-style (0.625rem, 1.25rem, 700);
+
+    // Tablet Typekits
+    @include tablet {
+        @include font-style (0.75rem, 1.25rem, 700);
+    }
+}
+
+// Padding Mixins
+
+@mixin padding-sides {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@mixin padding-headline {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 2.25rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+@mixin padding-component {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+// Specific Mixins
+
+@mixin padding-listing-gap {
+    padding-top: 0.5rem;
+    margin: 0;
+}
+
+
+// Top or Bottom only Padding Mixins
+
+@mixin padding-headline-top {
+    padding-top: 1.5rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 2.25rem;
+    }
+}
+
+@mixin padding-component-top {
+    padding-top: 1rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 1.5rem;
+    }
+}
+
+@mixin padding-component-bottom {
+    padding-bottom: 1rem;
+    margin: 0;
+
+    @include tablet {
+        padding-bottom: 1.5rem;
+    }
+}
+
+// Half Padding Mixins
+
+@mixin padding-headline-half {
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 1.125rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+@mixin padding-headline-bottom-half {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 2.25rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+@mixin padding-component-half {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+@mixin padding-component-top-half {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    margin: 0;
+
+    @include tablet {
+        padding-top: 0.75rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+@mixin padding-extra-sides {
+    @include tablet{
+        padding-left: 7.5%;
+        padding-right: 7.5%;
+    }
+    
+}
