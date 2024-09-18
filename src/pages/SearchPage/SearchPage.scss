@@ -1,0 +1,26 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.search-banner {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    width: 100%;
+
+    &__food, &__restaurant {
+        width: 50%;
+        color: $base;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include section-header();
+    }
+
+    &--active {
+        background-color: $secondary;
+    }
+    &--inactive {
+        background-color: rgba($color: $secondary, $alpha: 0.9);
+    }
+}
