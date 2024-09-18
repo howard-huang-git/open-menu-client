@@ -1,0 +1,51 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.menu-item {
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        background-color: $canvas;
+        @include padding-component();
+    }
+
+    &__details, &__data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__details {
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        margin: 0;
+        @include page-header();
+    }
+
+    &__restaurant, &__category {
+        margin: 0;
+        @include subheader();
+    }
+
+    &__rating {
+        margin: 0;
+        color: $primary;
+        @include section-header();
+    }
+
+    &__price {
+        margin: 0;
+        color: $secondary;
+        @include section-header();
+    }
+
+    &__reviews-title {
+        @include section-header();
+        @include padding-sides();
+        @include padding-headline();
+        font-style: italic;
+    }
+}
