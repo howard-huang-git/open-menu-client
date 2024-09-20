@@ -1,0 +1,77 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.rating-form {
+
+    @include padding-sides();
+    
+    &__headline {
+        @include section-header();
+        @include padding-headline-bottom-half();
+        text-align: center;
+    }
+
+    &__info-box {
+        @include padding-component();
+    }
+
+    &__info {
+        @include padding-component-half();
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    &__info-label {
+        @include labels();
+        color: $secondary;
+        margin: 0;
+        padding-left: 0.5rem;
+        padding-right: 1rem;
+    }
+
+    &__detail {
+        @include catch-copy();
+        margin: 0;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        @include padding-component-half();
+    }
+
+    &__label {
+        @include labels();
+        color: $secondary;
+        padding-left: 0.5rem;
+        padding-bottom: 0.25rem;
+    }
+
+    &__review {
+        height: 176px;
+        @include body-copy();
+    }
+
+    &__rater {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include padding-component-half();
+    }
+
+    &__stars {
+        @include page-header();
+        font-size: 2.5rem;
+        color: $primary;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__button {
+        margin: 1rem 0;
+        background-color: $primary;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+}

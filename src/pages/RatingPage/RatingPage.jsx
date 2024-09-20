@@ -1,8 +1,11 @@
+import RatingForm from '../../components/RatingForm/RatingForm'
 import './RatingPage.scss'
 
 function RatingPage() {
   return (
-    <div>RatingPage</div>
+    <>
+      <RatingForm />
+    </>
   )
 }
 

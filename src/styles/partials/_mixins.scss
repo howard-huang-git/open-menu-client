@@ -69,8 +69,8 @@
     }
 }
 
-@mixin labels-buttons {
-    @include font-style (0.625rem, 1.25rem, 700);
+@mixin labels {
+    @include font-style (0.875rem, 1.25rem, 700);
 
     // Tablet Typekits
     @include tablet {
