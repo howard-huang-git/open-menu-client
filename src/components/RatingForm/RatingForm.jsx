@@ -3,14 +3,14 @@ import CTA from '../CTA/CTA'
 import FormField from '../FormField/FormField'
 import StarSelector from '../StarSelector/StarSelector'
 import { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import Divider from '../../components/Divider/Divider'
 
 function RatingForm() {
 
     const { id } = useParams();
     const apiUrl = `${import.meta.env.VITE_API_URL}`;
+    const navigate = useNavigate();
 
     const [menuData, setMenuData] = useState({})
     const [ratingStars, setRatingStars] = useState(0)
@@ -28,9 +28,39 @@ function RatingForm() {
         fetchFood();
       }, []);
 
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        let form = event.target;
+        let name = form.ratingName.value
+        let review = form.ratingReview.value
+
+        try {
+
+            const formData = {
+                rating: ratingStars,
+                review: review,
+                reviewer_name: name,
+                menu_id: id,
+                restaurant_id: menuData.restaurant_id
+            }
+
+            axios.post(apiUrl + "/ratings", formData)
+            .then(() => {
+                alert("Submission Successfull!")
+                navigate(`/menu/${id}`)
+
+            })
+            .catch((error) => {
+                console.error(error);
+            }) 
+        } catch (error) {
+            console.error(error)
+        }
+      }
+
   return (
     <>
-        <form className='rating-form'>
+        <form className='rating-form' onSubmit={handleSubmit}>
             <h2 className="rating-form__headline">Review Your Meal</h2>
             <div className="rating-form__info-box">
                 <div className="rating-form__info">
