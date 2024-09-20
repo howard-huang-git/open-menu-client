@@ -48,4 +48,15 @@
         @include padding-headline();
         font-style: italic;
     }
+
+    &__button {
+        background-color: $secondary;
+        color: $base;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    &__cta {
+        padding: 0 5% 1rem;
+    }
 }

@@ -5,6 +5,7 @@ import RestaurantListing from '../../components/RestaurantListing/RestaurantList
 import './SearchPage.scss'
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Divider from "../../components/Divider/Divider"
+import Header from "../../components/Header/Header";
 
 function SearchPage() {
 
@@ -150,6 +151,7 @@ function SearchPage() {
 
   return (
     <>
+      <Header link="/" />
       <div className="search-banner">
         <div className={`search-banner__food ` + classMenuSearch()} onClick={toggleMenuSearch}>Menu Item</div>
         <div className={`search-banner__restaurant ` + classRestaurantSearch()} onClick={toggleRestaurantSearch}>Restaurant</div>

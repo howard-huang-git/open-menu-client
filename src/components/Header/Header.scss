@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+    background-color: $primary;
+    height: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include padding-sides();
+
+    &__title {
+        @include section-header();
+    }
+    &__back {
+        color: $black;
+        height: 24px;
+        width: 24px;
+    }
+    &__placeholder {
+        height: 24px;
+        width: 24px;
+    }
+}

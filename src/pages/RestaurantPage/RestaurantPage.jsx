@@ -4,6 +4,7 @@ import axios from "axios";
 import Divider from '../../components/Divider/Divider'
 import './RestaurantPage.scss'
 import RestaurantMenu from '../../components/RestaurantMenu/RestaurantMenu';
+import Header from '../../components/Header/Header';
 
 function RestaurantPage() {
 
@@ -63,6 +64,7 @@ function RestaurantPage() {
 
   return (
     <>
+      <Header link="/search"/>
       <section className="restaurant__info">
         <div className="restaurant__details">
           <h1 className="restaurant__name">{restaurantData.name}</h1>
