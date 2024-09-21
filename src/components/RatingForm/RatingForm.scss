@@ -48,6 +48,12 @@
         padding-bottom: 0.25rem;
     }
 
+    &__name {
+        &--error{
+            border: 2px #bc0a29, solid;
+        }
+    }
+
     &__review {
         height: 176px;
         @include body-copy();
@@ -73,5 +79,20 @@
         background-color: $primary;
         font-weight: 600;
         font-size: 0.875rem;
+    }
+
+    &__error {
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding-left: 0.5rem;
+        color: #bc0a29;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.25rem;
+
+        &--hide {
+            display: none;
+        }
     }
 }

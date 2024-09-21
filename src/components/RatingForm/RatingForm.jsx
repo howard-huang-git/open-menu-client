@@ -5,6 +5,7 @@ import StarSelector from '../StarSelector/StarSelector'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import errorTriangle from '../../assets/Icons/error_triangle.png'
 
 function RatingForm() {
 
@@ -14,6 +15,7 @@ function RatingForm() {
 
     const [menuData, setMenuData] = useState({})
     const [ratingStars, setRatingStars] = useState(0)
+    const [formErrors, setFormErrors] = useState({rating: false, name: false})
 
     const fetchFood = async () => {
         try {
@@ -33,28 +35,63 @@ function RatingForm() {
         let form = event.target;
         let name = form.ratingName.value
         let review = form.ratingReview.value
+        let errors = {rating: false, name: false}
 
-        try {
-
-            const formData = {
-                rating: ratingStars,
-                review: review,
-                reviewer_name: name,
-                menu_id: id,
-                restaurant_id: menuData.restaurant_id
+        if (ratingStars === 0 || !name) {
+            if (ratingStars === 0) {
+                errors.rating = true
             }
+            if (!name) {
+                errors.name = true
+            }
+            setFormErrors(errors)
+        } else {
+            try {
 
-            axios.post(apiUrl + "/ratings", formData)
-            .then(() => {
-                alert("Submission Successfull!")
-                navigate(`/menu/${id}`)
+                const formData = {
+                    rating: ratingStars,
+                    review: review,
+                    reviewer_name: name,
+                    menu_id: id,
+                    restaurant_id: menuData.restaurant_id
+                }
+    
+                axios.post(apiUrl + "/ratings", formData)
+                .then(() => {
+                    alert("Submission Successfull!")
+                    navigate(`/menu/${id}`)
+    
+                })
+                .catch((error) => {
+                    console.error(error);
+                }) 
+            } catch (error) {
+                console.error(error)
+            }
+        }
+      }
 
-            })
-            .catch((error) => {
-                console.error(error);
-            }) 
-        } catch (error) {
-            console.error(error)
+      const errorMessage = (param) => {
+        if (param === 'rating'){
+            if (formErrors.rating === true) {
+                return 'rating-form__error'
+            } else {
+                return 'rating-form__error--hide'
+            }
+        } else if (param === 'name') {
+            if (formErrors.name === true) {
+                return 'rating-form__error'
+            } else {
+                return 'rating-form__error--hide'
+            }
+        }
+      }
+
+      const nameClass = () => {
+        if (formErrors.name === true) {
+            return "rating-form__name--error"
+        } else {
+            return "rating-form__name"
         }
       }
 
@@ -76,10 +113,12 @@ function RatingForm() {
                 <p className="rating-form__label">Rating:</p>
                 <div className="rating-form__stars"><StarSelector rating={ratingStars} change={setRatingStars} /></div>
             </div>
+            <span className={errorMessage('rating')}><img src={errorTriangle} alt="error icon" /> Please pick a rating.</span>
             <div className="rating-form__field">
                 <label className="rating-form__label" htmlFor="ratingName">Name:</label>
-                <FormField className="rating-form__name" type="input" placeholder="Enter your name" name="ratingName" />
+                <FormField className={nameClass()} type="input" placeholder="Enter your name" name="ratingName" />
             </div>
+            <span className={errorMessage('name')}><img src={errorTriangle} alt="error icon" /> Please enter a name.</span>
             <div className="rating-form__field">
                 <label className="rating-form__label" htmlFor="ratingReview">Review:</label>
                 <FormField className="rating-form__review" type="textarea" placeholder="Share your thoughts" name="ratingReview" />

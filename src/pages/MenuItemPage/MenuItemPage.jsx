@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Divider from '../../components/Divider/Divider'
 import './MenuItemPage.scss'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MenuReview from "../../components/MenuReview/MenuReview";
+import Header from "../../components/Header/Header";
+import CTA from "../../components/CTA/CTA";
 
 function MenuItemPage() {
 
@@ -73,6 +75,7 @@ function MenuItemPage() {
 
   return (
     <>
+    <Header link="/search"/>
       <section className="menu-item__info">
         <div className="menu-item__details">
           <h1 className="menu-item__title">{foodData.item}</h1>
@@ -87,6 +90,9 @@ function MenuItemPage() {
       <Divider />
       <section className="menu-item__reviews">
           <h3 className="menu-item__reviews-title">Reviews</h3>
+          <div className="menu-item__cta">
+            <Link to={`/rating/${id}`}><CTA className="menu-item__button" text="Review This Meal" /></Link>
+          </div>
           {
             foodReviews.map((review) => (
               <MenuReview key={review.id} review={review} />

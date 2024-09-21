@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './MenuListing.scss'
 
 function MenuListing({ data }) {
@@ -14,7 +15,9 @@ function MenuListing({ data }) {
     <>
         <div className="menu-listing">
             <div className="menu-listing__left">
-                <p className="menu-listing__name">{data.item}</p>
+                <Link to={`/menu/${data.id}`} className="menu-listing__link">
+                  <p className="menu-listing__name">{data.item}</p>
+                </Link>
                 <p className="menu-listing__restaurant">{data.name}</p>
             </div>
             <div className="menu-listing__right">

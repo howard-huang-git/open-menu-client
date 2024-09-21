@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './RestaurantListing.scss'
 
 function RestaurantListing({ data }) {
@@ -14,7 +15,9 @@ function RestaurantListing({ data }) {
     <>
         <div className="restaurant-listing">
             <div className="restaurant-listing__left">
-                <p className="restaurant-listing__name">{data.name}</p>
+                <Link to={`/restaurant/${data.id}`} className="restaurant-listing__link">
+                  <p className="restaurant-listing__name">{data.name}</p>
+                </Link>
                 <p className="restaurant-listing__category">{data.type}</p>
             </div>
             <div className="restaurant-listing__right">
