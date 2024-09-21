@@ -109,16 +109,18 @@ function RatingForm() {
                     <p className="rating-form__detail">{menuData.name}</p>
                 </div>
             </div>
-            <div className="rating-form__rater">
-                <p className="rating-form__label">Rating:</p>
-                <div className="rating-form__stars"><StarSelector rating={ratingStars} change={setRatingStars} /></div>
+            <div className="rating-form__field-box">
+                <div className="rating-form__rater">
+                    <p className="rating-form__label">Rating:</p>
+                    <div className="rating-form__stars"><StarSelector rating={ratingStars} change={setRatingStars} /></div>
+                </div>
+                <span className={errorMessage('rating')}><img src={errorTriangle} alt="error icon" /> Please pick a rating.</span>
+                <div className="rating-form__field">
+                    <label className="rating-form__label" htmlFor="ratingName">Name:</label>
+                    <FormField className={nameClass()} type="input" placeholder="Enter your name" name="ratingName" />
+                </div>
+                <span className={errorMessage('name')}><img src={errorTriangle} alt="error icon" /> Please enter a name.</span>
             </div>
-            <span className={errorMessage('rating')}><img src={errorTriangle} alt="error icon" /> Please pick a rating.</span>
-            <div className="rating-form__field">
-                <label className="rating-form__label" htmlFor="ratingName">Name:</label>
-                <FormField className={nameClass()} type="input" placeholder="Enter your name" name="ratingName" />
-            </div>
-            <span className={errorMessage('name')}><img src={errorTriangle} alt="error icon" /> Please enter a name.</span>
             <div className="rating-form__field">
                 <label className="rating-form__label" htmlFor="ratingReview">Review:</label>
                 <FormField className="rating-form__review" type="textarea" placeholder="Share your thoughts" name="ratingReview" />
