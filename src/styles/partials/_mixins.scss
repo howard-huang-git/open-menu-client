@@ -29,7 +29,7 @@
 
     // Tablet Typekits
     @include tablet {
-        @include font-style (2.063rem, 2.75rem, 700);
+        @include font-style (3rem, 3.75rem, 700);
     }
 }
 
@@ -38,7 +38,7 @@
 
     // Tablet Typekits
     @include tablet {
-        @include font-style (0.75rem, 1.25rem, 700);
+        @include font-style (1.75rem, 2.25rem, 600);
     }
 }
 
@@ -47,7 +47,7 @@
 
     // Tablet Typekits
     @include tablet {
-        @include font-style (0.875rem, 1.375rem, 700);
+        @include font-style (1.25rem, 1.875rem, 700);
     }
 }
 
@@ -56,7 +56,7 @@
 
     // Tablet Typekits
     @include tablet {
-        @include font-style (0.875rem, 1.375rem, 400);
+        @include font-style (1.25rem, 1.75rem, 600);
     }
 }
 
@@ -65,7 +65,7 @@
 
     // Tablet Typekits
     @include tablet {
-        @include font-style (0.875rem, 1.375rem, 400);
+        @include font-style (1rem, 1.25rem, 400);
     }
 }
 
@@ -74,7 +74,7 @@
 
     // Tablet Typekits
     @include tablet {
-        @include font-style (0.75rem, 1.25rem, 700);
+        @include font-style (1rem, 1.25rem, 700);
     }
 }
 

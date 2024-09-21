@@ -5,24 +5,52 @@
     @include padding-sides();
     @include padding-component();
 
+    &__form {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+    }
+
+    &__bar {
+        @include tablet {
+            flex-grow: 1;
+        }
+    }
+    
     &__dropdowns {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         @include padding-component-top-half();
+
+        @include tablet {
+            width: 19rem;
+            padding: 0;
+        }
     }
 
     &__select {
-        width: 49%;
+        width: 47%;
         height: 24px;
         border-radius: 10px;
         border-color: $neutral;
         padding: 0 0.5rem;
+        @include tablet {
+            height: 38px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
     }
 
     &__button {
         background-color: $primary;
         font-weight: 600;
         font-size: 0.875rem;
+        @include tablet {
+            width: 10rem;
+            height: 38px;
+        }
     }
 }
