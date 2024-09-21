@@ -8,11 +8,24 @@
     flex-direction: row;
     justify-content: space-between;
 
+    &__left {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            width: 70%;
+        }
+    }
+
     &__right {
         width: 6rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            width: 30%
+        }
     }
     &__name {
         margin: 0;
@@ -21,21 +34,35 @@
     &__restaurant {
         @include catch-copy();
         @include padding-listing-gap();
+        @include tablet {
+            width: 50%;
+            padding: 0;
+        }
     }
     &__rating {
         margin: 0;
         color: $primary;
         text-align: right;
         @include catch-copy();
+        @include tablet {
+            width: 50%;
+        }
     }
     &__price {
         color: $secondary;
         text-align: right;
         @include catch-copy();
         @include padding-listing-gap();
+        @include tablet {
+            padding: 0;
+            width: 50%;
+        }
     }
     &__link {
         text-decoration: none;
         color: $black;
+        @include tablet {
+            width: 50%;
+        }
     }
 }
