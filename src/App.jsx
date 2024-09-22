@@ -8,6 +8,7 @@ import RestaurantPage from './pages/RestaurantPage/RestaurantPage'
 import RatingPage from './pages/RatingPage/RatingPage'
 import FinderPage from './pages/FinderPage/FinderPage'
 import AddRestaurant from './components/AddRestaurant/AddRestaurant';
+import AddMenuItem from './components/AddMenuItem/AddMenuItem';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/rating" element={<FinderPage />} />
           <Route path="/rating/:id" element={<RatingPage />} />
           <Route path="/add/restaurant" element={<AddRestaurant />} />
+          <Route path="/add/food" element={<AddMenuItem />} />
           
         </Routes>
       </BrowserRouter>
