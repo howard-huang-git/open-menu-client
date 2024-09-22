@@ -52,7 +52,7 @@ function RatingForm() {
                     rating: ratingStars,
                     review: review,
                     reviewer_name: name,
-                    menu_id: id,
+                    menu_id: Number(id),
                     restaurant_id: menuData.restaurant_id
                 }
     
