@@ -9,7 +9,19 @@ function RestaurantListing({ data }) {
         } else {
           return `${avg.toFixed(1)} ★`
         }
+    }
+
+    const address = (string) => {
+      return string.split(',')[0]
+    }
+
+    const price_range = (min, max) => {
+      if (min === null || max === null) {
+        return <></>
+      } else {
+        return <p className="restaurant-listing__price">${Math.round(min)} - {Math.round(max)}</p>
       }
+    }
 
   return (
     <>
@@ -18,11 +30,11 @@ function RestaurantListing({ data }) {
                 <Link to={`/restaurant/${data.id}`} className="restaurant-listing__link">
                   <p className="restaurant-listing__name">{data.name}</p>
                 </Link>
-                <p className="restaurant-listing__category">{data.type}</p>
+                <p className="restaurant-listing__category">{address(data.address)}</p>
             </div>
             <div className="restaurant-listing__right">
                 <p className="restaurant-listing__rating">{rating(data.rating)}</p>
-                <p className="restaurant-listing__price">${Math.round(data.min)} - {Math.round(data.max)}</p>
+                {price_range(data.min, data.max)}
             </div>
         </div>
     </>

@@ -21,7 +21,7 @@ function RestaurantPage() {
       let data = {
         ...response.data,
         rating: Number(response.data.rating),
-        full_address: response.data.address + ", " + response.data.area,
+        // full_address: response.data.address + ", " + response.data.area,
         price_range: `$${response.data["min(`price`)"]} - $${response.data["max(`price`)"]}`
       }
       setRestaurantData(data);
@@ -63,48 +63,71 @@ function RestaurantPage() {
   }
 
   const price_range = (val) => {
-    if (val.includes("null")) {
-      return ""
+    try {
+      if (val.includes("null")) {
+        return "N/A"
+      } else {
+        return restaurantData.price_range
+      }
+    } catch {}
+  }
+
+  const summary = (string) => {
+    if (string === "" || string === null) {
+      return <></>
     } else {
-      return restaurantData.price_range
+      return <p className="restaurant__summary">{restaurantData.summary}</p>
     }
+  }
+
+  const menuList = (data) => {
+    try {
+      if (data.length === 0) {
+        return <></>
+      } else {
+        return (<>
+          <h2 className="restaurant__headline">Menu</h2>
+      <Divider />
+      <section className="restaurant__menu">
+      {
+       (menuCategories.map((category) => (
+          <>
+            <h3 className="restaurant-menu__category">{category}</h3>
+            {
+              restaurantMenu.filter((item) => item.category === category).map((item) => (
+                <RestaurantMenu item={item} />
+              ))
+            }
+          </>
+        )))
+      }
+      </section>
+        </>)
+      }
+    } catch {}
   }
 
   return (
     <>
       <Header link="/search"/>
       <section className="restaurant__info">
+        <h1 className="restaurant__name">{restaurantData.name}</h1>
+        <h2 className="restaurant__rating">{rating(restaurantData.rating)}</h2>
+        {summary(restaurantData.summary)}
         <div className="restaurant__details">
-          <h1 className="restaurant__name">{restaurantData.name}</h1>
-          <h3 className="restaurant__type">{restaurantData.type}</h3>
-          <h3 className="restaurant__address">{restaurantData.full_address}</h3>
-        </div>
-        <div className="restaurant__data">
-          <h2 className="restaurant__rating">{rating(restaurantData.rating)}</h2>
+          <p className="restaurant__label">Address:</p>
+          <h3 className="restaurant__address">{restaurantData.address}</h3>
+          <p className="restaurant__label">Phone:</p>
+          <h3 className="restaurant__address">{restaurantData.phone}</h3>
+          <p className="restaurant__label">Price Range:</p>
           <h2 className="restaurant__price">{price_range(restaurantData.price_range)}</h2>
         </div>
+        <a href={restaurantData.url} className="restaurant__link">
+          <p className="restaurant__maps">Google Maps</p>
+        </a>
       </section>
       <Divider />
-      <h2 className="restaurant__headline">Menu</h2>
-      <Divider />
-      <section className="restaurant__menu">
-        {
-          menuCategories.map((category) => (
-            <>
-              <h3 className="restaurant-menu__category">{category}</h3>
-              {
-                restaurantMenu.filter((item) => item.category === category).map((item) => (
-                  <RestaurantMenu item={item} />
-                ))
-              }
-            </>
-          ))
-        }
-      </section>
-      
-
-
-      {/* <RestaurantMenu item={restaurantMenu[0]} /> */}
+      {menuList(restaurantMenu)}
     </>
   )
 }

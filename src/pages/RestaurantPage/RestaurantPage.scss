@@ -8,15 +8,17 @@
         background-color: $canvas;
         text-align: center;
         @include padding-component();
+        @include padding-sides();
     }
 
     &__details, &__data {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     &__details {
+        margin-top: 1rem;
         margin-bottom: 1.5rem;
     }
 
@@ -25,9 +27,16 @@
         @include page-header();
     }
 
-    &__type, &__address {
+    &__summary {
+        @include body-copy();
+        @include padding-component-half();
+        font-style: italic;
+    }
+
+    &__address {
         margin: 0;
-        @include subheader();
+        text-align: left;
+        @include catch-copy();
     }
 
     &__rating {
@@ -38,8 +47,24 @@
 
     &__price {
         margin: 0;
+        @include catch-copy();
+    }
+
+    &__label {
+        @include labels();
+        padding-top: 0.5rem;
+        margin: 0;
         color: $secondary;
-        @include section-header();
+    }
+
+    &__link {
+        text-decoration: none;
+    }
+
+    &__maps {
+        @include catch-copy();
+        @include padding-component-half();
+        color: $secondary;
     }
 
     &__headline {

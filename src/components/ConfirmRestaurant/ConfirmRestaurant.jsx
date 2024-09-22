@@ -17,9 +17,12 @@ function ConfirmRestaurant({ data, area, toggle }) {
 
             let restaurant = {
                 name: rawData.name,
-                type: "Canadian",
                 address: rawData.formatted_address,
-                area: area
+                area: area,
+                phone: rawData.formatted_phone_number,
+                url: rawData.url,
+                summary: rawData.editorial_summary.overview
+
             }
 
             await axios.post(apiUrl + "/restaurants", restaurant)

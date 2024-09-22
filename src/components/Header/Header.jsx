@@ -14,9 +14,9 @@ function Header({ link }) {
             <div className="header__placeholder"></div>
             <ul className="header__nav-bar">
               <li className="header__nav-list"><NavLink to="/" className={navLinks}>Home</NavLink></li>
-              <li className="header__nav-list"><NavLink to="/about" className={navLinks}>About</NavLink></li>
               <li className="header__nav-list"><NavLink to="/search" className={navLinks}>Search</NavLink></li>
               <li className="header__nav-list"><NavLink to="/rating" className={navLinks}>Rate</NavLink></li>
+              <li className="header__nav-list"><NavLink to="/add" className={navLinks}>Add</NavLink></li>
             </ul>
         </header>
     </>
