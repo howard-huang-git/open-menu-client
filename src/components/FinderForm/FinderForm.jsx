@@ -156,7 +156,7 @@ function FinderForm() {
                 <label className="finder-form__label" htmlFor="finderFood">Menu Item:</label>
                 <Select name='finderFood' options={menuNames} styles={selectStyle("menu")} />
             </div>
-            <CTA className="finder-form__button" text="SEARCH"/>
+            <CTA className="finder-form__button" text="SEARCH" type="submit"/>
         </form>
         {errorMessage()}
     </>

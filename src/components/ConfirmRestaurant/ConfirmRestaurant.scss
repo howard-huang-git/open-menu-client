@@ -1,0 +1,55 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.confirm-restaurant {
+
+    @include padding-sides();
+    margin: 1rem;
+    background-color: $canvas;
+    border: 1px solid $neutral;
+    border-radius: 10px;
+
+    &__prompt {
+        @include catch-copy();
+        @include padding-headline-bottom-half();
+        text-align: center;
+        @include desktop {
+            width: 100%;
+        }
+    }
+    &__field {
+        display: flex;
+        flex-direction: column;
+        @include padding-component-half();
+        @include desktop {
+            width: 100%;
+        }
+    }
+    &__label {
+        @include labels();
+        color: $secondary;
+        padding-bottom: 0.25rem;
+        margin: 0;
+    }
+    &__copy {
+        @include body-copy();
+        margin: 0;
+    }
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        @include padding-component();
+    }
+    &__button {
+        margin: 1rem 0;
+        background-color: $base;
+        border: 1px $neutral solid;
+        font-weight: 600;
+        font-size: 0.875rem;
+        &--primary {
+            background-color: $primary;
+        }
+    }
+
+}

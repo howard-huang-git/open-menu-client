@@ -12,8 +12,8 @@ function HomePage() {
         <div className="homepage__imgbox">
           <img src={restaurant} alt="fried fries and burger on plate" className="homepage__image" />
         </div>
-        <Link to="/rating"><CTA className="homepage__button" text="Rate Your Meal" /></Link>
-        <Link to="/search"><CTA className="homepage__button" text="Search for Food" /></Link>
+        <Link to="/rating"><CTA className="homepage__button" text="Rate Your Meal" type="button" /></Link>
+        <Link to="/search"><CTA className="homepage__button" text="Search for Food" type="button" /></Link>
       </main>
     </>
   )

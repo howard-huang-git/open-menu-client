@@ -82,7 +82,7 @@ function SearchPage() {
       if (searchType === true) {
         return (item) => item.item.toUpperCase().includes(searchTerm) || item.category.toUpperCase().includes(searchTerm) 
       } else if (searchType === false) {
-        return (item) => item.name.toUpperCase().includes(searchTerm) || item.type.toUpperCase().includes(searchTerm)
+        return (item) => item.name.toUpperCase().includes(searchTerm) || item.address.toUpperCase().includes(searchTerm) 
       }
       
     }

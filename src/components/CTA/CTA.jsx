@@ -1,9 +1,9 @@
 import "./CTA.scss";
 
-function CTA({ text, className }) {
+function CTA({ text, className, type, handler }) {
   return (
     <>
-        <button className={"CTA " + className} type="submit" >{text}</button>
+        <button className={"CTA " + className} type={type} onClick={handler}  >{text}</button>
     </>
   );
 }
