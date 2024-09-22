@@ -91,7 +91,7 @@ function MenuItemPage() {
       <section className="menu-item__reviews">
           <h3 className="menu-item__reviews-title">Reviews</h3>
           <div className="menu-item__cta">
-            <Link to={`/rating/${id}`}><CTA className="menu-item__button" text="Review This Meal" /></Link>
+            <Link to={`/rating/${id}`}><CTA className="menu-item__button" text="Review This Meal" type="button" /></Link>
           </div>
           {
             foodReviews.map((review) => (

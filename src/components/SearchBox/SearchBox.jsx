@@ -31,7 +31,7 @@ function SearchBox({ change }) {
                         <option value="price-sort">Sort by Price</option>
                     </select>
                 </div>
-                <CTA className="search-box__button" text="Search" />
+                <CTA className="search-box__button" text="Search" type="submit" />
             </form>
         </section>
     </>

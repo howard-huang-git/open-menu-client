@@ -125,7 +125,7 @@ function RatingForm() {
                 <label className="rating-form__label" htmlFor="ratingReview">Review:</label>
                 <FormField className="rating-form__review" type="textarea" placeholder="Share your thoughts" name="ratingReview" />
             </div>
-            <CTA className="rating-form__button" text="SUBMIT"/>
+            <CTA className="rating-form__button" text="SUBMIT" type="submit"/>
         </form>
     </>
   )
