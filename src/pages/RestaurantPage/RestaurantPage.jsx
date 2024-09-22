@@ -62,6 +62,14 @@ function RestaurantPage() {
     
   }
 
+  const price_range = (val) => {
+    if (val.includes("null")) {
+      return ""
+    } else {
+      return restaurantData.price_range
+    }
+  }
+
   return (
     <>
       <Header link="/search"/>
@@ -73,7 +81,7 @@ function RestaurantPage() {
         </div>
         <div className="restaurant__data">
           <h2 className="restaurant__rating">{rating(restaurantData.rating)}</h2>
-          <h2 className="restaurant__price">{restaurantData.price_range}</h2>
+          <h2 className="restaurant__price">{price_range(restaurantData.price_range)}</h2>
         </div>
       </section>
       <Divider />
