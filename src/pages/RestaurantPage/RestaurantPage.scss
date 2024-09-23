@@ -1,0 +1,99 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.restaurant {
+    &__info {
+        display: flex;
+        flex-direction: column;
+        background-color: $canvas;
+        text-align: center;
+        @include padding-component();
+        @include padding-sides();
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    }
+
+    &__details{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__name {
+        margin: 0;
+        @include page-header();
+    }
+
+    &__summary {
+        @include body-copy();
+        @include padding-component-half();
+        font-style: italic;
+    }
+
+    &__address {
+        margin: 0;
+        text-align: left;
+        @include catch-copy();
+    }
+
+    &__rating {
+        margin: 0;
+        color: $primary;
+        @include section-header();
+    }
+
+    &__price {
+        margin: 0;
+        @include catch-copy();
+    }
+
+    &__label {
+        @include labels();
+        padding-top: 0.5rem;
+        margin: 0;
+        color: $secondary;
+    }
+
+    &__link {
+        text-decoration: none;
+    }
+
+    &__maps {
+        @include catch-copy();
+        @include padding-component-half();
+        color: $secondary;
+    }
+
+    &__headline {
+        @include section-header();
+        @include padding-component();
+        text-align: center;
+    }
+
+    &__menu {
+        @include padding-sides();
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    }
+
+    &-menu__category {
+        @include padding-headline();
+        @include subheader();
+        font-style: italic;
+        color: $secondary;
+    }
+}

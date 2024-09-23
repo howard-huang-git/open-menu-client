@@ -1,0 +1,96 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.menu-item {
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        @include padding-component();
+        @include padding-sides();
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    }
+
+    &__details, &__data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__details {
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        margin: 0;
+        @include page-header();
+    }
+
+    &__restaurant, &__category {
+        margin: 0;
+        @include subheader();
+    }
+
+    &__rating {
+        margin: 0;
+        color: $primary;
+        @include section-header();
+    }
+
+    &__price {
+        margin: 0;
+        color: $secondary;
+        @include section-header();
+    }
+
+    &__head {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+    }
+
+    &__reviews-title {
+        @include section-header();
+        @include padding-sides();
+        @include padding-headline();
+        font-style: italic;
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    }
+
+    &__button {
+        background-color: $secondary;
+        color: $base;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    &__cta {
+        padding: 0 5% 1rem;
+        @include tablet {
+            flex-grow: 1;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    }
+}

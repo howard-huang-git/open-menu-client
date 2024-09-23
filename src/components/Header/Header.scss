@@ -1,0 +1,70 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+    background-color: $primary;
+    height: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include padding-sides();
+
+    @include tablet {
+        height: 5rem;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    @include desktop {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    &__title {
+        @include section-header();
+    }
+    &__arrow {
+        color: $black;
+        height: 24px;
+        width: 24px;
+    }
+    &__back {
+        @include tablet {
+            display: none;
+        }
+    }
+    &__placeholder {
+        height: 24px;
+        width: 24px;
+        @include tablet {
+            display: none;
+        }
+    }
+    &__nav-bar {
+        display: none;
+        list-style-type: none;
+        justify-content: space-between;
+        width: 20rem;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+    &__nav-link {
+        text-decoration: none;
+        color: $black;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        @include labels();
+
+        &--active {
+            color: $secondary;
+            border-bottom: 4px $secondary  solid;
+        }
+    }
+    &__nav-list {
+        height: 5rem;
+    }
+}

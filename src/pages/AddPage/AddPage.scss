@@ -1,11 +1,28 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.search-banner {
+.add-banner {
     display: flex;
     flex-direction: row;
     height: 4rem;
     width: 100%;
+
+    @include tablet {
+        justify-content: center;
+        background-color: $canvas;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+
+        @include tablet {
+            max-width: 64rem;
+            background-color: $base;
+        }
+    }
 
     &__food, &__restaurant {
         width: 50%;

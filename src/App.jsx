@@ -6,6 +6,8 @@ import SearchPage from './pages/SearchPage/SearchPage'
 import MenuItemPage from './pages/MenuItemPage/MenuItemPage'
 import RestaurantPage from './pages/RestaurantPage/RestaurantPage'
 import RatingPage from './pages/RatingPage/RatingPage'
+import FinderPage from './pages/FinderPage/FinderPage'
+import AddPage from './pages/AddPage/AddPage';
 
 function App() {
 
@@ -17,7 +19,9 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/menu/:id" element={<MenuItemPage />} />
           <Route path="/restaurant/:id" element={<RestaurantPage />} />
-          <Route path="/rating" element={<RatingPage />} />
+          <Route path="/rating" element={<FinderPage />} />
+          <Route path="/rating/:id" element={<RatingPage />} />
+          <Route path="/add" element={<AddPage />} />   
         </Routes>
       </BrowserRouter>
     </>

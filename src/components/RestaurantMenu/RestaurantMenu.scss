@@ -1,0 +1,30 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.restaurant-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @include padding-component-half();
+
+    &__item {
+        @include catch-copy();
+        margin: 0;
+        width: 60%;
+    }
+
+    &__rating {
+        @include catch-copy();
+        color: $primary;
+        margin: 0;
+        text-align: right;
+        width: 20%;
+    }
+
+    &__price {
+        @include catch-copy();
+        color: $secondary;
+        margin: 0;
+        width: 20%;
+    }
+}

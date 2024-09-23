@@ -1,8 +1,13 @@
+import Header from '../../components/Header/Header'
+import RatingForm from '../../components/RatingForm/RatingForm'
 import './RatingPage.scss'
 
 function RatingPage() {
   return (
-    <div>RatingPage</div>
+    <>
+      <Header link="/rating"/>
+      <RatingForm />
+    </>
   )
 }
 

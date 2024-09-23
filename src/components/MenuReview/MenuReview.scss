@@ -1,0 +1,52 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.menu-review {
+    @include padding-component();
+    @include padding-sides();
+    @include tablet {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    @include desktop {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    &__head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__left, &__right {
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    &__name {
+        margin: 0;
+        @include subheader();
+    }
+
+    &__date {
+        color: $secondary;
+        margin: 0;
+        @include body-copy();
+        font-style: italic;
+        font-weight: 600;
+    }
+
+    &__rating {
+        color: $primary;
+        margin: 0;
+        @include subheader();
+    }
+
+    &__copy {
+        @include body-copy();
+        @include padding-component();
+    }
+
+}
