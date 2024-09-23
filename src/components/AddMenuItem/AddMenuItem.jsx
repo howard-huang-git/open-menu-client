@@ -5,6 +5,7 @@ import CTA from '../CTA/CTA'
 import { useEffect, useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
+import errorTriangle from '../../assets/Icons/error_triangle.png'
 
 function AddMenuItem() {
 
@@ -13,6 +14,7 @@ function AddMenuItem() {
 
     const [restaurantDetails, setRestaurantDetails] = useState([])
     const [restaurantNames, setRestaurantNames] = useState([])
+    const [errorMessage, setErrorMessage] = useState(0)
 
     const fetchRestaurantNames = async () => {
         try {
@@ -39,28 +41,35 @@ function AddMenuItem() {
         let category = form.menuCategory.value 
         let price = form.menuPrice.value 
         let area = form.menuArea.value 
-        let restaurant = form.menuRestaurant.value 
+        let restaurant = form.menuRestaurant.value
 
-        try {
-            const found = restaurantDetails.find((res) => res.area === area && res.name === restaurant)
-            if (found) {
-                const restaurantID = found.id
-                let menu = {
-                    item: item,
-                    category: category,
-                    price: price,
-                    restaurant_id : restaurantID
+        if (!item || !category || !price || !area || !restaurant) {
+            setErrorMessage(1)
+        } else if (isNaN(price)) {
+            setErrorMessage(2)
+        } else {
+            try {
+                const found = restaurantDetails.find((res) => res.area === area && res.name === restaurant)
+                if (found) {
+                    const restaurantID = found.id
+                    let menu = {
+                        item: item,
+                        category: category,
+                        price: price,
+                        restaurant_id : restaurantID
+                    }
+                    await axios.post(apiUrl + "/foods", menu)
+                    .then((response) => {
+                        alert("Submission Successful!");
+                        navigate('/'); 
+                    });
+                } else {
+                    setErrorMessage(3)
                 }
-                await axios.post(apiUrl + "/foods", menu)
-                .then((response) => {
-                    alert("Submission Successful!");
-                    navigate('/'); 
-                });
+            } catch(error) {
+                console.error(error)
             }
-        } catch(error) {
-            console.error(error)
         }
-
     }
 
     const areas = [
@@ -75,6 +84,18 @@ function AddMenuItem() {
           borderColor: '#999999',
         }),
     })
+
+    const error = () => {
+        if (errorMessage === 0) {
+            return <></>
+        } else if (errorMessage === 1) {
+            return <p className="add-menu__error"><img src={errorTriangle} alt="error icon" /> Please provide all values in request.</p>
+        } else if (errorMessage === 2) {
+            return <p className="add-menu__error"><img src={errorTriangle} alt="error icon" /> Please input a valid number for price.</p>
+        } else if (errorMessage === 3) {
+            return <p className="add-menu__error"><img src={errorTriangle} alt="error icon" /> Restaurant cannot be found. Please check your input.</p>
+        }
+    }
 
   return (
     <>
@@ -101,6 +122,7 @@ function AddMenuItem() {
                 <FormField className="add-menu__input" type="input" placeholder="Enter price of menu item" name="menuPrice" />
             </div>
             <CTA className="add-menu__button" text="SUBMIT" type="submit"/>
+            {error()}
         </form>
     </>
   )

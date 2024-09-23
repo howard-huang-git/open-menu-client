@@ -14,6 +14,7 @@ function HomePage() {
         </div>
         <Link to="/rating"><CTA className="homepage__button" text="Rate Your Meal" type="button" /></Link>
         <Link to="/search"><CTA className="homepage__button" text="Search for Food" type="button" /></Link>
+        <Link to="/add"><CTA className="homepage__button" text="Add a Menu" type="button" /></Link>
       </main>
     </>
   )

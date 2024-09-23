@@ -2,9 +2,16 @@
 @use "../../styles/partials/variables" as *;
 
 .menu-review {
-    background-color: $base;
     @include padding-component();
     @include padding-sides();
+    @include tablet {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    @include desktop {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
 
     &__head {
         display: flex;

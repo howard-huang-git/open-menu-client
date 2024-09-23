@@ -26,6 +26,34 @@ Currently, most of the big apps for finding and reviewing places to eat such as 
 - As a user, I want to be able to see a restaurant's menu items
 - As a user, I want to be able to leave my own rating and review for a menu item
 
+## Instructions
+
+1. Create .env files using the environment variable names and values in the .env.example files
+2. npm install the following dependencies in their respective projects to run this app
+
+#### Client Dependencies:
+
+- axios
+- dotenv
+- react-router-dom
+- react-select
+- sass
+
+#### Server Dependencies:
+
+- axios
+- cors
+- dotenv
+- express
+- knex
+- mysql2
+- nodemon
+
+3. Create a database with the values in the server's .env.example and then run the following commands in the server project terminal:
+- npx knex migrate:latest
+- npx knex seed:run
+
+
 ## Implementation
 
 ### Tech Stack
@@ -38,67 +66,25 @@ Currently, most of the big apps for finding and reviewing places to eat such as 
     - react
     - react-router
     - axios
+    - react-select
 - Server libraries:
     - knex
     - express
+    - axios
 
 ### APIs
 
-- No external APIs will be used for the first sprint
+- Google Places API
 
 ### Sitemap
 
 - Home Page
-- Search Page (User will be able to search for menu items and restaurants within a given area)
-- View Menu Item (User will be able to see the details of a specific menu itme including its rating and reviews)
-- View Restaurant (User will be able to see the details of a specific restaurant including its menu)
-- Rating Page (User will be able to record their rating and review of a menu item)
-
-### Mockups
-
-**Structure Mockups (Layout of Pages w/o styles)**
-
-#### Home Page
-
-![](images/homepage-structure.png)
-
-#### Search Page - Menu Items
-
-![](images/search-menu-structure.png)
-
-#### Search Page - Restaurants
-
-![](images/search-restaurant-structure.png)
-
-#### View Menu Item Page
-
-![](images/view-menu-structure.png)
-
-#### View Restaurant Page
-
-![](images/view-restaurant-structure.png)
-
-### Rating Page
-
-![](images/rating-page-structure.png)
-
-**Style Mockups (General Aesthetic Pallette w/o accurate layout)**
-
-#### Search Page
-
-![](images/search-style.png)
-
-#### View Menu Page
-
-![](images/menu-style.png)
-
-#### View Restaurant Page
-
-![](images/restaurant-style.png)
-
-### Data
-
-![](images/sql-diagram.png)
+- Search Page
+- View Menu Item
+- View Restaurant
+- Finder Page
+- Rating Page
+- Add Page
 
 ### Endpoints 
 
@@ -258,58 +244,6 @@ Response:
     }
 ]
 ```
-
-
-
-## Roadmap
-
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date.
-
-- Create client
-    - react project with routes and boilerplate pages
-
-- Create server
-    - express project with routing, with placeholder 200 responses
-
-- Create remote repositories for client and server projects
-
-- Create migrations
-
-- Gather sample data for 20 restaurants across 2 areas
-
-- Create seeds with sample restaurant and menu data
-
-- Migrate and Seed Database
-
-- Feature: Search Page
-    - Create MenuListing Component
-    - Create RestaurantListing Component
-    - Create and implement GET /foods request to populate list
-    - Create and implement GET /restaurants request to populate list
-    - Create SearchBox Component
-    - Add search filtering
-
-- Feature: View Menu Item
-    - Create and implement GET /foods/:id request to populate page
-    - Create Review component 
-    - Create and implement GET /ratings/food/:id request to populate review section
-
-- Feature: View Restaurant
-    - Create and implement GET /restaurants/:id request to populate page
-    - Create GET /foods/restaurant/:id request
-    - Build menu section
-
-- Feature: Rating Page
-    - Build rating form
-    - Create POST /ratings request
-    - Develop rating form submission logic and function
-    - Develop rating form validation
-    - Add "Rate this meal" button to View Menu Item page
-
-- Feature: Navigation
-    - Create Header
-    - Create Navigation Menu
-    - Create Homepage
     
 
 ---
