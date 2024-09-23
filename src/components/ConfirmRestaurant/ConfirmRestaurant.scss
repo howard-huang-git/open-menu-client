@@ -5,9 +5,16 @@
 
     @include padding-sides();
     margin: 1rem;
-    background-color: $canvas;
+    background-color: $base;
     border: 1px solid $neutral;
     border-radius: 10px;
+
+    @include tablet {
+        max-width: 64rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin: 1rem auto;
+    }
 
     &__prompt {
         @include catch-copy();
@@ -43,7 +50,7 @@
     }
     &__button {
         margin: 1rem 0;
-        background-color: $base;
+        background-color: $light-neutral;
         border: 1px $neutral solid;
         font-weight: 600;
         font-size: 0.875rem;

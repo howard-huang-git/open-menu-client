@@ -4,6 +4,16 @@
 .finder-form {
 
     @include padding-sides();
+
+    @include tablet {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    @include desktop {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
     
     &__headline {
         @include section-header();
@@ -34,7 +44,7 @@
     &__error {
         background-color: rgba($color: $primary, $alpha: 0.3);
         border-radius: 10px;
-        margin: 0 5%;
+        margin: 0;
     }
 
     &__mistake {

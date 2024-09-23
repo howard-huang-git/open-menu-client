@@ -4,6 +4,12 @@
 .search-box {
     @include padding-sides();
     @include padding-component();
+    @include tablet {
+        max-width: 80rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin: auto;
+    }
 
     &__form {
         @include tablet {

@@ -49,8 +49,10 @@ function AddPage() {
     <>
         <Header />
         <div className="add-banner">
+          <div className="add-banner__container">
             <div className={`add-banner__restaurant ` + classMenuSearch()} onClick={toggleMenu}>Menu Item</div>
             <div className={`add-banner__food ` + classRestaurantSearch()} onClick={toggleRestaurant}>Restaurant</div>
+          </div>
         </div>
         {addMain(addType)}
     </>

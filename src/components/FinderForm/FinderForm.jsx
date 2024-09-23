@@ -157,8 +157,8 @@ function FinderForm() {
                 <Select name='finderFood' options={menuNames} styles={selectStyle("menu")} />
             </div>
             <CTA className="finder-form__button" text="SEARCH" type="submit"/>
-        </form>
-        {errorMessage()}
+            {errorMessage()}
+        </form>   
     </>
   )
 }

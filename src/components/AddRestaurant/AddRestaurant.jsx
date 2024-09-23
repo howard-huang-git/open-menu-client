@@ -6,6 +6,7 @@ import axios from "axios"
 import Divider from '../Divider/Divider'
 import ConfirmRestaurant from '../ConfirmRestaurant/ConfirmRestaurant'
 import Select from 'react-select'
+import errorTriangle from '../../assets/Icons/error_triangle.png'
 
 function AddRestaurant() {
 
@@ -14,6 +15,7 @@ function AddRestaurant() {
     const [searchData, setSearchData] = useState({})
     const [searchToggle, setSearchToggle] = useState(false)
     const [searchArea, setSearchArea] = useState("")
+    const [addError, setAddError] = useState(false)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -21,13 +23,18 @@ function AddRestaurant() {
         let name = form.restaurantName.value 
         let address = form.restaurantAddress.value
         let area = form.restaurantArea.value
-        let input = name + " " + address
+        let input = name + " " + address + " " + area
 
         try {
             let response = await axios.get(apiUrl + `/google/${input}`);
-            setSearchToggle(true)
-            setSearchArea(area)
-            setSearchData(response.data.candidates[0])
+            if (response.data.status === "ZERO_RESULTS" || !response) {
+                setAddError(true)
+            } else {
+                setSearchToggle(true)
+                setAddError(false)
+                setSearchArea(area)
+                setSearchData(response.data.candidates[0])
+            }
         } catch(error) {
             console.error(error)
         }
@@ -42,6 +49,14 @@ function AddRestaurant() {
                     <ConfirmRestaurant data={searchData} area={searchArea} toggle={setSearchToggle} />
                 </>
             )
+        } else {
+            return <></>
+        }
+    }
+
+    const errorMessage = () => {
+        if (addError === true) {
+            return <p className="add-restaurant__error"><img src={errorTriangle} alt="error icon" /> Cannot find restaurant. Please check your values again.</p>
         } else {
             return <></>
         }
@@ -77,6 +92,7 @@ function AddRestaurant() {
                 <Select name='restaurantArea' options={areas} styles={selectStyle()} />
             </div>
             <CTA className="add-restaurant__button" text="SUBMIT" type="submit"/>
+            {errorMessage()}
         </form>
         {confirmation()}
     </>

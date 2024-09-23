@@ -6,8 +6,16 @@
     &__info {
         display: flex;
         flex-direction: column;
-        background-color: $canvas;
         @include padding-component();
+        @include padding-sides();
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
     }
 
     &__details, &__data {
@@ -42,11 +50,28 @@
         @include section-header();
     }
 
+    &__head {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+    }
+
     &__reviews-title {
         @include section-header();
         @include padding-sides();
         @include padding-headline();
         font-style: italic;
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
     }
 
     &__button {
@@ -58,5 +83,14 @@
 
     &__cta {
         padding: 0 5% 1rem;
+        @include tablet {
+            flex-grow: 1;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
     }
 }

@@ -9,15 +9,20 @@
         text-align: center;
         @include padding-component();
         @include padding-sides();
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
     }
 
-    &__details, &__data {
+    &__details{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-    }
-
-    &__details {
         margin-top: 1rem;
         margin-bottom: 1.5rem;
     }
@@ -75,6 +80,14 @@
 
     &__menu {
         @include padding-sides();
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
     }
 
     &-menu__category {
