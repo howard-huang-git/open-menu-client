@@ -72,6 +72,22 @@ function MenuItemPage() {
     } catch {}
   }
 
+  const reviews = () => {
+    if (foodReviews.length === 0) {
+      return <p className="menu-item__no-reviews">No reviews yet. Be the first!</p>
+    } else {
+      return (
+        <>
+          {
+            foodReviews.map((review) => (
+              <MenuReview key={review.id} review={review} />
+            ))
+          }
+        </>
+      )
+    }
+  }
+
 
   return (
     <>
@@ -79,7 +95,7 @@ function MenuItemPage() {
       <section className="menu-item__info">
         <div className="menu-item__details">
           <h1 className="menu-item__title">{foodData.item}</h1>
-          <h3 className="menu-item__restaurant">{foodData.name}</h3>
+          <Link to={`/restaurant/${foodData.restaurant_id}`} className="menu-item__link"><h3 className="menu-item__restaurant">{foodData.name}</h3></Link>
           <h3 className="menu-item__category">{foodData.category}</h3>
         </div>
         <div className="menu-item__data">
@@ -95,11 +111,7 @@ function MenuItemPage() {
                 <Link to={`/rating/${id}`}><CTA className="menu-item__button" text="Review This Meal" type="button" /></Link>
               </div>
           </div>
-          {
-            foodReviews.map((review) => (
-              <MenuReview key={review.id} review={review} />
-            ))
-          }
+          {reviews()}
       </section>
     </>
   )
