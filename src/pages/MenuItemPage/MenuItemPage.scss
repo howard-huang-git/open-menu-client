@@ -93,4 +93,24 @@
             padding-right: 15%;
         }
     }
+
+    &__link {
+        text-decoration: none;
+        color: $black;
+    }
+
+    &__no-reviews {
+        @include catch-copy();
+        @include padding-sides();
+        @include padding-headline();
+        font-style: italic;
+        @include tablet {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @include desktop {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    }
 }

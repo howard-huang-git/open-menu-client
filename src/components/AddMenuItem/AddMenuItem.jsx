@@ -61,7 +61,7 @@ function AddMenuItem() {
                     await axios.post(apiUrl + "/foods", menu)
                     .then((response) => {
                         alert("Submission Successful!");
-                        navigate('/'); 
+                        navigate(`/menu/${response.data[0].id}`); 
                     });
                 } else {
                     setErrorMessage(3)

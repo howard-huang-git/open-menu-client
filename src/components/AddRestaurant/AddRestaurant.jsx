@@ -23,7 +23,7 @@ function AddRestaurant() {
         let name = form.restaurantName.value 
         let address = form.restaurantAddress.value
         let area = form.restaurantArea.value
-        let input = name + " " + address + " " + area
+        let input = name + " " + address
 
         try {
             let response = await axios.get(apiUrl + `/google/${input}`);
